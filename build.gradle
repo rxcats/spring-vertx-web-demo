@@ -1,7 +1,7 @@
 buildscript {
     ext {
         springBootVersion = '2.1.0.RELEASE'
-        vertxVersion = '3.6.0.CR1'
+        vertxVersion = '3.6.0'
     }
     repositories {
         mavenCentral()
@@ -20,7 +20,7 @@ apply plugin: 'idea'
 group = 'io.github.rxcats'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 11
-//targetCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()

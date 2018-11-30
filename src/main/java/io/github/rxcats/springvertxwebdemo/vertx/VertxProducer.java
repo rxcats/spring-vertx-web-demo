@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -36,9 +35,6 @@ import io.vertx.ext.web.handler.CorsHandler;
 @Slf4j
 @Component
 public class VertxProducer {
-
-    @Value("${server.port}")
-    private int serverPort;
 
     private Vertx vertx;
     private Router router;
@@ -94,14 +90,6 @@ public class VertxProducer {
         var options = new HttpServerOptions().setLogActivity(true).setTcpKeepAlive(true);
 
         server = vertx.createHttpServer(options);
-
-        server.requestHandler(router).listen(serverPort, listen -> {
-            if (listen.succeeded()) {
-                log.info("Server is now listening!");
-            } else {
-                log.info("Failed to bind");
-            }
-        });
 
         customizeJsonMapper();
     }
